@@ -413,7 +413,7 @@ before do
     logger.info 'Received request without a token'
     error('unauthorized')
   end
-
+  logger.info access_token
   # Remove the access_token to prevent any accidental exposure later
   params.delete('access_token')
 
