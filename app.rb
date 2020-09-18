@@ -66,6 +66,7 @@ module AppHelpers
                           }
                         })
     decoded_resp = Hash[URI.decode_www_form(resp.body)].transform_keys(&:to_sym)
+    logger.info decoded_resp
     error('forbidden') unless (decoded_resp.include? :scope) && (decoded_resp.include? :me)
 
     decoded_resp[:scope].gsub(/post/, 'create').split(' ')
