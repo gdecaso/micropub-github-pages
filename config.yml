@@ -1,0 +1,17 @@
+sites:
+  mysite:
+    github_repo: gdecaso.github.io
+    permalink_style: "/:categories/:year/:month/:title/"
+    site_url: "https://gdecaso.github.io"
+    full_image_urls: false # Include site_url in img paths
+    image_dir: "images"
+
+download_photos: false # Ensure linked images are added to repo
+
+github:
+  token:  # Personal access token with all repo permissions
+  username: gdecaso
+
+micropub:
+  token_endpoint: "https://tokens.indieauth.com/token"
+  token_me: "https://gdecaso.github.io"
