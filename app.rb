@@ -406,8 +406,11 @@ end
 before do
   # Pull out and verify the authorization header or access_token
   if env['HTTP_AUTHORIZATION']
+    logger.info 'http_authorization'
+    logger.info env['HTTP_AUTHORIZATION']
     @access_token = env['HTTP_AUTHORIZATION'].match(/Bearer (.*)$/)[1]
   elsif params['access_token']
+    logger.info 'elif'
     @access_token = params['access_token']
   else
     logger.info 'Received request without a token'
