@@ -2,7 +2,7 @@ sites:
   mysite:
     github_repo: gdecaso.github.io
     permalink_style: "/:categories/:year/:month/:title/"
-    site_url: "https://gdecaso.github.io"
+    site_url: "https://curiosidadesespaciales.ar"
     full_image_urls: false # Include site_url in img paths
     image_dir: "images"
 
@@ -14,4 +14,4 @@ github:
 
 micropub:
   token_endpoint: "https://tokens.indieauth.com/token"
-  token_me: "https://gdecaso.github.io"
+  token_me: "https://curiosidadesespaciales.ar"
