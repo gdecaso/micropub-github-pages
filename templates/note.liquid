@@ -1,22 +1,7 @@
 ---
-layout: post
-{% if category -%}
-tags:
-{% for cat in category -%}
-- {{ cat }}
-{% endfor -%}
-{% endif -%}
-{% if slug -%}
-permalink: "{{ slug }}"
-{% endif -%}
-date: {{ published }}
-{% if fm_published -%}
-published: {{ fm_published }}
-{% endif -%}
+title: Post en construcción # TODO
+# TODO categories: 
 ---
-{% if photo -%}
-  {% for pic in photo -%}
-![{{ pic["alt"] }}]({{ pic["url"] }})
-  {% endfor -%}
-{% endif %}
+# TODO Abstract (con quote "> ")
+
 {{ content }}
