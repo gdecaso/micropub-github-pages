@@ -1,6 +1,6 @@
 sites:
   mysite:
-    github_repo: gdecaso.github.io
+    github_repo: gdecaso/gdecaso.github.io
     permalink_style: "/:year/:month/:day/:title/"
     site_url: "https://curiosidadesespaciales.ar"
     full_image_urls: false # Include site_url in img paths
