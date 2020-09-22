@@ -71,6 +71,10 @@ module AppHelpers
     decoded_resp[:scope].gsub(/post/, 'create').split(' ')
   end
 
+  def remove_unrolls(s)
+    s.gsub(/<span class="entity-/,'<br>\0')
+  end
+
   def publish_post(params)
     date = DateTime.parse(params[:published])
     filename = date.strftime('%F')
@@ -91,6 +95,8 @@ module AppHelpers
         files.merge!(photo.delete('content')) if photo['content']
       end
     end
+
+    params[:content] = remove_unrolls(params[:content])
 
     template = File.read("templates/#{params[:type]}.liquid")
     content = Liquid::Template.parse(template).render(stringify_keys(params))
