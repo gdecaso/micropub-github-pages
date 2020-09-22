@@ -73,7 +73,7 @@ module AppHelpers
   end
 
   def add_line_breaks(s)
-    s["<span class=\"entity-"] = "<br><span class=\"entity-"
+    s.gsub(/<span class="entity-/, "<br><span class=\"entity-")
     s
   end
 
