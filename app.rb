@@ -72,6 +72,11 @@ module AppHelpers
     decoded_resp[:scope].gsub(/post/, 'create').split(' ')
   end
 
+  def add_line_breaks(s)
+    s["<span class=\"entity-"] = "<br><span class=\"entity-"
+    s
+  end
+
   def publish_post(params)
     date = DateTime.parse(params[:published])
     filename = date.strftime('%F')
@@ -92,6 +97,8 @@ module AppHelpers
         files.merge!(photo.delete('content')) if photo['content']
       end
     end
+
+    params[:content] = add_line_breaks(params[:content])
 
     template = File.read("templates/#{params[:type]}.liquid")
     content = Liquid::Template.parse(template).render(stringify_keys(params))
