@@ -73,8 +73,7 @@ module AppHelpers
   end
 
   def add_line_breaks(s)
-    s.gsub(/<span class="entity-/, "<br><span class=\"entity-")
-    s
+    s.gsub(/<span class="entity-/,'<br>\0')
   end
 
   def publish_post(params)
