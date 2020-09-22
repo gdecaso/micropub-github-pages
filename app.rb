@@ -66,7 +66,6 @@ module AppHelpers
                           }
                         })
     decoded_resp = Hash[URI.decode_www_form(resp.body)].transform_keys(&:to_sym)
-    logger.info decoded_resp
     error('forbidden') unless (decoded_resp.include? :scope) && (decoded_resp.include? :me)
 
     decoded_resp[:scope].gsub(/post/, 'create').split(' ')
@@ -412,17 +411,13 @@ end
 before do
   # Pull out and verify the authorization header or access_token
   if env['HTTP_AUTHORIZATION']
-    logger.info 'http_authorization'
-    logger.info env['HTTP_AUTHORIZATION']
     @access_token = env['HTTP_AUTHORIZATION'].match(/Bearer (.*)$/)[1]
   elsif params['access_token']
-    logger.info 'elif'
     @access_token = params['access_token']
   else
     logger.info 'Received request without a token'
     error('unauthorized')
   end
-  logger.info @access_token
   # Remove the access_token to prevent any accidental exposure later
   params.delete('access_token')
 
