@@ -72,7 +72,7 @@ module AppHelpers
   end
 
   def remove_unrolls(s)
-    s.gsub(/<span class="entity-/,'<br>\0')
+    s.gsub(/@threadreaderapp<\/a> unroll/, '</a>')
   end
 
   def publish_post(params)
