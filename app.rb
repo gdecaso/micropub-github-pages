@@ -71,8 +71,11 @@ module AppHelpers
     decoded_resp[:scope].gsub(/post/, 'create').split(' ')
   end
 
-  def remove_unrolls(s)
+  def apply_substitutions(s)
+    # Sometimes the thread will include the unroll message, and we don't want that.
     s.gsub(/@threadreaderapp<\/a> unroll/, '</a>')
+    # Somtimes the videos will not be on autoplay
+    s.gsub(/video controls poster/, 'video autoplay muted loop controls poster')
   end
 
   def publish_post(params)
@@ -96,7 +99,7 @@ module AppHelpers
       end
     end
 
-    params[:content] = remove_unrolls(params[:content])
+    params[:content] = apply_substitutions(params[:content])
 
     template = File.read("templates/#{params[:type]}.liquid")
     content = Liquid::Template.parse(template).render(stringify_keys(params))
