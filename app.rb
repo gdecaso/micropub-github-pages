@@ -73,7 +73,7 @@ module AppHelpers
 
   def apply_substitutions(s)
     # Sometimes the thread will include the unroll message, and we don't want that.
-    s.gsub(/@threadreaderapp<\/a> unroll/, '</a>')
+    s = s.gsub(/@threadreaderapp<\/a> unroll/, '</a>')
     # Somtimes the videos will not be on autoplay
     s.gsub(/video controls poster/, 'video autoplay muted loop controls poster')
   end
